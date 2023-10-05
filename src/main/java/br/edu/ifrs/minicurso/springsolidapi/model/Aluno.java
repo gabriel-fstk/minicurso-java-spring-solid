@@ -2,11 +2,16 @@ package br.edu.ifrs.minicurso.springsolidapi.model;
 
 import java.util.List;
 
+import org.hibernate.annotations.ManyToAny;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,7 +44,8 @@ public class Aluno {
     @Column(length = 255, unique = true)
     private String email;
 
-    
+    @ManyToMany(mappedBy = "alunos")
+    @JsonIgnoreProperties("alunos")
     private List<Turma> turmas;
 
 }

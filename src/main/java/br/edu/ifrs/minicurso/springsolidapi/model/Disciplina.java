@@ -36,7 +36,7 @@ public class Disciplina {
     private Integer semestre;
 
     @OneToMany(mappedBy = "disciplina")
-    @JsonIgnoreProperties("alunos")
+    @JsonIgnoreProperties("alunos") //evita redundancia (ciclo infinito
     private List<Turma> turmas;
 
 }

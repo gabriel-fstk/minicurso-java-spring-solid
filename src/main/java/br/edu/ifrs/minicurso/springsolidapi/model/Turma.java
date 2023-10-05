@@ -39,7 +39,7 @@ public class Turma {
 
     @ManyToMany
     @JoinTable(name = "aluno_turma", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name = "aluno_id"))
-    @JsonIgnoreProperties("turmas")
+    @JsonIgnoreProperties("turmas") //evita redundancia (ciclo infinito)
 
     private List<Aluno> alunos;
 }
